@@ -1,6 +1,6 @@
 <?php 
 /*
-Template Name: Perplexity Pro Premium
+Template Name: Perplexity Pro 2
 */
 ?>
 <!DOCTYPE html>
@@ -8,279 +8,321 @@ Template Name: Perplexity Pro Premium
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Portal | Perplexity Pro</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Perplexity Pro - Delivery Information</title>
     <style>
         :root {
-            --primary: #10a37f;
-            --secondary: #002228;
-            --accent: #20b8cd;
-            --bg: #f4f7f6;
-            --text-main: #1a1a1a;
-            --text-muted: #666;
+            --primary-blue: #1fb6ff;
+            --dark-cyan: #0891b2;
+            --accent-pink: #f5576c;
+            --accent-purple: #f093fb;
+            --support-green: #11998e;
             --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --shadow: rgba(0, 0, 0, 0.15);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-cyan) 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
             line-height: 1.6;
-            padding: 40px 20px;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        /* --- Header Section --- */
-        .brand-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .logo-circle {
-            width: 80px;
-            height: 80px;
-            background: var(--secondary);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: var(--accent);
-            font-size: 40px;
-            box-shadow: var(--shadow);
-        }
-
-        h1 { font-weight: 700; font-size: 2.2rem; letter-spacing: -0.5px; color: var(--secondary); }
-        .subtitle { color: var(--text-muted); font-size: 1.1rem; margin-top: 5px; }
-
-        /* --- Grid Layout --- */
-        .main-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 30px;
-        }
-
-        .card {
+        /* Header Section */
+        .header {
             background: var(--white);
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: var(--shadow);
+            border-radius: 24px;
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
             margin-bottom: 30px;
         }
 
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 600;
+        .product-icon {
+            font-size: 80px;
             margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--secondary);
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
         }
 
-        /* --- Access Credentials --- */
-        .login-box {
-            background: #f9f9f9;
-            border: 1px solid #eee;
-            border-radius: 12px;
-            padding: 20px;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        h1 {
+            color: var(--dark-cyan);
+            font-size: 2.8em;
             margin-bottom: 10px;
+            letter-spacing: -1px;
         }
 
-        .label { font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); letter-spacing: 1px; }
-        
-        .value-group {
+        .subtitle {
+            color: #555;
+            font-size: 1.3em;
+            margin-bottom: 35px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .feature-tag {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-cyan));
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        /* Card Component */
+        .card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .card-title {
+            color: var(--dark-cyan);
+            font-size: 1.8em;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            background: white;
-            padding: 12px 15px;
-            border-radius: 8px;
-            margin-top: 8px;
-            border: 1px solid #e5e5e5;
+            gap: 12px;
         }
 
-        .value-text { font-family: 'Monaco', 'Consolas', monospace; font-size: 1rem; font-weight: 500; }
-
-        .copy-btn {
-            background: var(--bg);
-            border: 1px solid #ddd;
-            color: var(--secondary);
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.75rem;
-            padding: 6px 12px;
-            border-radius: 6px;
-            transition: all 0.2s;
-        }
-
-        .copy-btn:hover { background: #e2e8f0; }
-
-        .btn-primary {
-            display: block;
-            text-align: center;
-            background: var(--secondary);
+        /* Access Methods */
+        .access-method {
+            background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-pink) 100%);
             color: white;
-            text-decoration: none;
-            padding: 14px;
+            padding: 30px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+        }
+
+        .credential-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border-left: 5px solid white;
+        }
+
+        .credential-label {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            opacity: 0.9;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .credential-value {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 6px;
+            word-break: break-all;
+        }
+
+        .btn-action {
+            display: inline-block;
+            background: white;
+            color: var(--accent-pink);
+            padding: 14px 28px;
             border-radius: 10px;
-            font-weight: 600;
-            margin-top: 20px;
-            transition: transform 0.2s;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 10px;
+            transition: all 0.3s ease;
         }
 
-        .btn-primary:hover { transform: translateY(-2px); }
+        .btn-action:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
 
-        /* --- Steps --- */
+        /* Instructions */
+        .step-list {
+            counter-reset: steps;
+            list-style: none;
+        }
+
         .step-item {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            padding: 20px 20px 20px 70px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            position: relative;
         }
 
-        .step-num {
-            flex-shrink: 0;
-            width: 28px;
-            height: 28px;
-            background: var(--accent);
+        .step-item::before {
+            counter-increment: steps;
+            content: counter(steps);
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 35px;
+            height: 35px;
+            background: var(--dark-cyan);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 0.9rem;
         }
 
-        .step-text b { display: block; color: var(--secondary); font-size: 1rem; }
-        .step-text p { font-size: 0.9rem; color: var(--text-muted); }
-
-        .alert-box {
-            background: #fff8e6;
-            border-left: 4px solid #ffb020;
-            padding: 20px;
-            border-radius: 8px;
+        /* Warning Box */
+        .warning-area {
+            background: #fff9db;
+            border-left: 6px solid #fab005;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 25px;
         }
 
-        .support-card {
-            background: var(--secondary);
+        .warning-area h4 { color: #856404; margin-bottom: 10px; }
+        .warning-area li { margin: 8px 0; list-style-type: '⚠️ '; padding-left: 10px; }
+
+        /* Bonus & Support */
+        .bonus-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            padding: 35px;
+            border-radius: 24px;
+            margin-bottom: 30px;
+        }
+
+        .support-section {
+            background: linear-gradient(135deg, var(--support-green) 0%, #38ef7d 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 24px;
             text-align: center;
         }
 
-        .support-card h2 { color: var(--accent); }
-        
-        .email-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.1);
-            color: white;
+        .email-pill {
+            display: inline-block;
+            background: white;
+            color: var(--support-green);
+            padding: 12px 24px;
+            border-radius: 50px;
             text-decoration: none;
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 10px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(255,255,255,0.1);
+            font-weight: bold;
+            margin: 10px;
+            transition: 0.3s;
         }
 
-        @media (max-width: 850px) {
-            .main-grid { grid-template-columns: 1fr; }
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            .card { padding: 25px; }
+            .step-item { padding-left: 60px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header class="brand-header">
-            <div class="logo-circle">P</div>
-            <h1>Perplexity Pro Access</h1>
-            <p class="subtitle">Premium Portal • Exclusive Member Access</p>
-        </header>
+<div class="container">
+    <header class="header">
+        <div class="product-icon">🔍</div>
+        <h1>Perplexity Pro</h1>
+        <p class="subtitle">Premium AI-Powered Search & Research</p>
+        <div class="features-grid">
+            <div class="feature-tag">Unlimited Pro Search</div>
+            <div class="feature-tag">Advanced AI Models</div>
+            <div class="feature-tag">Priority Support</div>
+        </div>
+    </header>
 
-        <div class="main-grid">
-            <div class="content-area">
-                <section class="card">
-                    <div class="card-title">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                        Account Credentials
-                    </div>
-
-                    <div class="login-box">
-                        <span class="label">Authorized Email Address</span>
-                        <div class="value-group">
-                            <span class="value-text" id="mainEmail">henrysmith.pwc@gmail.com</span>
-                            <button class="copy-btn" onclick="copyText('mainEmail')">COPY</button>
-                        </div>
-                    </div>
-
-                    <a href="https://www.perplexity.ai" target="_blank" class="btn-primary">Launch Perplexity AI →</a>
-                </section>
-
-                <section class="card">
-                    <div class="card-title">📋 Setup Instructions</div>
-                    <div class="step-item">
-                        <div class="step-num">1</div>
-                        <div class="step-text">
-                            <b>Visit Perplexity</b>
-                            <p>Open the official site in a new browser tab.</p>
-                        </div>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-num">2</div>
-                        <div class="step-text">
-                            <b>Enter Email</b>
-                            <p>Select "Sign In" then "Continue with Email" using the address above.</p>
-                        </div>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-num">3</div>
-                        <div class="step-text">
-                            <b>Verify Session</b>
-                            <p>Check your email for the verification link/code to complete the login.</p>
-                        </div>
-                    </div>
-                </section>
+    <section class="card">
+        <h2 class="card-title">🚀 Access Your Account</h2>
+        
+        <div class="access-method">
+            <h3>Login Method 1 (Recommended)</h3>
+            <div class="credential-box">
+                <div class="credential-label">Email Address</div>
+                <div class="credential-value">kbru428@outlook.com</div>
             </div>
+            <div class="credential-box">
+                <div class="credential-label">Access Link</div>
+                <div class="credential-value">https://mail.mirbuds.com?email=kbru428%40outlook.com&token=mRrZdZS8bcGQjXP7Sef4yEaLF5jcy9vy</div>
+            </div>
+            <a href="https://mail.mirbuds.com?email=kbru428%40outlook.com&token=mRrZdZS8bcGQjXP7Sef4yEaLF5jcy9vy" class="btn-action" target="_blank">Open Mailbox →</a>
+        </div>
 
-            <div class="sidebar">
-                <section class="card alert-box">
-                    <div class="card-title" style="color: #856404; font-size: 1.1rem;">⚠️ Important Notice</div>
-                    <ul style="padding-left: 18px; font-size: 0.85rem; color: #856404; line-height: 1.4;">
-                        <li style="margin-bottom: 8px;">Do not modify password or security settings.</li>
-                        <li>This is a shared professional environment.</li>
-                    </ul>
-                </section>
+        <div class="access-method" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);">
+            <h3>Login Method 2 (Alternative)</h3>
+            <div class="credential-box">
+                <div class="credential-label">Email Address</div>
+                <div class="credential-value">gghyoq15811j@outlook.com</div>
+            </div>
+            <a href="https://shorturl.at/JWTyP" class="btn-action" style="color: #2575fc;" target="_blank">Get Login Code →</a>
+        </div>
+    </section>
 
-                <section class="card support-card">
-                    <div class="card-title" style="color: white; justify-content: center;">Support Center</div>
-                    <p style="font-size: 0.8rem; opacity: 0.8; margin-bottom: 15px;">24/7 Priority Assistance</p>
-                    <a href="mailto:gpremium15@gmail.com" class="email-btn">gpremium15@gmail.com</a>
-                    <a href="mailto:brycefields20@gmail.com" class="email-btn">brycefields20@gmail.com</a>
-                </section>
+    <section class="card">
+        <h2 class="card-title">📋 Step-by-Step Instructions</h2>
+        <div class="step-list">
+            <div class="step-item">
+                <strong>Visit Perplexity:</strong> Go to <a href="https://www.perplexity.ai/" target="_blank">perplexity.ai</a>
+            </div>
+            <div class="step-item">
+                <strong>Sign In:</strong> Click "Sign in" and select "Continue with Email".
+            </div>
+            <div class="step-item">
+                <strong>Enter Email:</strong> Use one of the addresses provided above.
+            </div>
+            <div class="step-item">
+                <strong>Retrieve OTP:</strong> Open the mailbox link, find the code, and enter it.
             </div>
         </div>
-    </div>
 
-    <script>
-        function copyText(id) {
-            const text = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                const btn = event.target;
-                const originalText = btn.innerText;
-                btn.innerText = "COPIED";
-                setTimeout(() => { btn.innerText = originalText; }, 2000);
-            });
-        }
-    </script>
+        <div class="warning-area">
+            <h4>⚠️ Important Rules</h4>
+            <ul>
+                <li>Do NOT change account settings or passwords.</li>
+                <li>Do NOT delete other users' history/files.</li>
+                <li>Refresh the mailbox if the code doesn't appear immediately.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer class="support-section">
+        <h2>🎯 Need Help?</h2>
+        <p>Our team is available 24/7 for technical support and warranty claims.</p>
+        <div style="margin: 20px 0;">
+            <a href="mailto:gpremium15@gmail.com" class="email-pill">📧 gpremium15@gmail.com</a>
+            <a href="mailto:brycefields20@gmail.com" class="email-pill">📧 brycefields20@gmail.com</a>
+        </div>
+        <p>Visit us: <strong><a href="https://leadingai.site" style="color: white;">leadingai.site</a></strong></p>
+    </footer>
+
+    <div style="text-align: center; color: white; margin: 40px 0; opacity: 0.8; font-size: 0.9em;">
+        <p>Thank you for your purchase! Enjoy your Pro experience.</p>
+    </div>
+</div>
+
 </body>
 </html>
